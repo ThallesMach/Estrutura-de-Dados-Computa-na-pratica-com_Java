@@ -11,6 +11,8 @@ public class Vetor {
 	
 	
 	public void adiciona(Aluno aluno) {
+		this.garanteEspaco();
+		
 		this.alunos[totalDeAlunos] = aluno;
 		totalDeAlunos++;
 	}
@@ -18,8 +20,20 @@ public class Vetor {
 	private boolean posicaoValida(int posicao) {
 		return posicao >=0 && posicao <= totalDeAlunos;
 	}
+	
+	private void garanteEspaco() {
+		if(totalDeAlunos == alunos.length ) {
+			Aluno[] novoArray = new Aluno[alunos.length*2];
+			for (int i = 0; i < alunos.length; i++) {
+				novoArray[i] = alunos[i];
+			}
+			this.alunos = novoArray;
+		}
+	}
+	
 	// Posicioa em qualquer luga da Lista
 	public void adiciona(int posicao, Aluno aluno) {
+		this.garanteEspaco();
 		
 		if(!posicaoValida(posicao) ) {
 			throw new IllegalArgumentException("Posição invalida");
@@ -47,11 +61,11 @@ public class Vetor {
 	
 	public void remove(int posicao) {
 		
-		for(int i = posicao; i < this.totalDeAlunos; i++) {
+		for(int i = posicao; i < this.totalDeAlunos -1; i++) {
 			this.alunos[i] = this.alunos[i+1];
 		}
 		totalDeAlunos--;
-		
+		this.alunos[totalDeAlunos]= null;
 	}
 	
 	// Esse method vai desconbri se o Aluno ta ou não ta naquela lista.
