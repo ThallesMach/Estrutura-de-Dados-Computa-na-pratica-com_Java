@@ -1,5 +1,7 @@
 package ed;
 
+import java.util.ArrayList;
+
 public class VetorTeste {
 
 	public static void main(String[] args) {
@@ -37,6 +39,9 @@ public class VetorTeste {
 		}
 		
 		System.out.println(lista);
+		
+		ArrayList<Aluno> listaDoJava = new ArrayList<Aluno>();
+//		lista.adiciona(null);
 
 	}
 
